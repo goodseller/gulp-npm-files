@@ -9,6 +9,11 @@
   "keywords": [
     "gulp-npm-files"
   ],
-  "author": "HD Informática",
+  "repository": "nipher/gulp-npm-files",
+  "author": {
+    "name": "HD Informática Ltda.",
+    "email": "informatica@hd-informatica.com",
+    "url": "https://github.com/Nipher"
+  },
   "license": "MIT"
 }
