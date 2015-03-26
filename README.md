@@ -23,7 +23,7 @@ gulp.task('copyNpmDependenciesOnly', function() {
 
 // Copy dependencies and devDependencies to build/node_modules/
 gulp.task('copyAllNpmDependencies', function() {
-  gulp.src(gnf(true), {base:'./'}).pipe(gulp.dest('./build));
+  gulp.src(gnf(true), {base:'./'}).pipe(gulp.dest('./build'));
 });
 
 ```

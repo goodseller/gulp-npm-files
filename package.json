@@ -1,6 +1,6 @@
 {
   "name": "gulp-npm-files",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Gulp plugin for listing package.json dependencies",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,8 @@
   ],
   "repository": "nipher/gulp-npm-files",
   "author": {
-    "name": "HD Informática Ltda.",
-    "email": "informatica@hd-informatica.com",
+    "name": "Nipher",
+    "email": "github@nipher.com.br",
     "url": "https://github.com/Nipher"
   },
   "license": "MIT"
