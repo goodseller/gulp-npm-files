@@ -26,6 +26,22 @@ gulp.task('copyAllNpmDependencies', function() {
   gulp.src(gnf(true), {base:'./'}).pipe(gulp.dest('./build'));
 });
 
+// Copy dependencies to build/node_modules/ by
+// value in './path/to/package.json' file
+gulp.task('copyNpmDependenciesAtDifferentFolder', function() {
+  gulp
+    .src(gnf(null, './path/to/package.json'), {base:'./'})
+    .pipe(gulp.dest('./build'));
+});
+
+// Copy dependencies and devDependencies to build/node_modules/ by
+// value in './path/to/package.json' file
+gulp.task('copyAllNpmDependenciesAtDifferentFolder', function() {
+  gulp
+    .src(gnf(null, './path/to/package.json'), {base:'./'})
+    .pipe(gulp.dest('./build'));
+});
+
 ```
 ## LICENSE
 

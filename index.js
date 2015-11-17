@@ -1,9 +1,9 @@
 var fs = require('fs');
 
-module.exports = function(devDependencies) {
+module.exports = function(devDependencies, packageJsonFilePath) {
   var buffer, packages, keys;
   
-  buffer = fs.readFileSync('./package.json');
+  buffer = fs.readFileSync(packageJsonFilePath || './package.json');
   packages = JSON.parse(buffer.toString());
   keys = [];
   
