@@ -1,6 +1,15 @@
 var fs = require('fs');
 
-module.exports = function(devDependencies, packageJsonFilePath) {
+var arrayContains = function(a, obj) {
+  for (var i = 0; i < a.length; i++) {
+    if (a[i] === obj) {
+      return true;
+    }
+  }
+  return false;
+};
+
+var getDependenciesGlob = function(devDependencies, packageJsonFilePath) {
   var buffer, packages, keys;
   
   buffer = fs.readFileSync(packageJsonFilePath || './package.json');
@@ -8,14 +17,22 @@ module.exports = function(devDependencies, packageJsonFilePath) {
   keys = [];
   
   for (key in packages.dependencies) {
-    keys.push('./node_modules/' + key + '/**/*');
+    if (!arrayContains(keys, key)) {
+      keys.push('./node_modules/' + key + '/**/*');
+      keys = keys.concat(getDependenciesGlob(devDependencies, './node_modules/' + key + '/package.json'));
+    }
   }
 
   if (devDependencies) {
     for (key in packages.devDependencies) {
-      keys.push('./node_modules/' + key + '/**/*');
+      if (!arrayContains(keys, key)) {
+        keys.push('./node_modules/' + key + '/**/*');
+        keys = keys.concat(getDependenciesGlob(devDependencies, './node_modules/' + key + '/package.json'));
+      }
     }
   }
 
   return keys;
 };
+
+module.exports = getDependenciesGlob;
